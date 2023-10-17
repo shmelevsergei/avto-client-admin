@@ -1,3 +1,26 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+
+    body {
+        @apply bg-blue-700 font-roboto text-xl text-white
+    }
+}
+
+@layer components {
+    .classBtn {
+        @apply px-5 py-2.5 rounded-md text-white border border-white w-max hover:shadow-2xl hover:border-transparent
+        hover:bg-white hover:text-gray-800 transition-colors active:border-transparent
+        active:bg-white active:text-gray-800 active:shadow-2xl
+    }
+
+    .classInput {
+        @apply rounded-md bg-white text-gray-800 outline-none px-2.5 placeholder-gray-600 focus:border-slate-600
+    }
+
+    .container {
+        @apply max-w-[900px]
+    }
+}

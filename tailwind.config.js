@@ -1,18 +1,16 @@
-import prettierConfig from './prettier.config';
-
 /** @type {import('tailwindcss').Config} */
 export default {
-	content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+	content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
 	theme: {
 		container: {
-			padding: "2rem",
-			center: true,
+			padding: '2rem',
+			center: true
 		},
 		extend: {
 			fontFamily: {
-				roboto: ["Roboto", "sans-serif"],
-			},
-		},
+				roboto: ['Roboto', 'sans-serif']
+			}
+		}
 	},
-	plugins: [require("@tailwindcss/forms"), prettierConfig],
-};
+	plugins: [require('@tailwindcss/forms'), 'prettier-plugin-tailwindcss']
+}

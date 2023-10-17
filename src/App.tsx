@@ -1,13 +1,8 @@
+import { RouterProvider } from 'react-router-dom'
+import { router } from './router/router.tsx'
+
 function App() {
-	return (
-		<>
-			<div className='flex justify-between container'>
-				<h1 className=' mx-auto text-base text-red-300 font-bold text-center '>
-					Hello
-				</h1>
-			</div>
-		</>
-	);
+	return <RouterProvider router={router} />
 }
 
-export default App;
+export default App
