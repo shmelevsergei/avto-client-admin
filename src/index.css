@@ -7,6 +7,10 @@
     body {
         @apply bg-blue-700 font-roboto text-xl text-white
     }
+
+    input {
+        @apply text-gray-800
+    }
 }
 
 @layer components {

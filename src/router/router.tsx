@@ -1,7 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom'
 import Layout from '../pages/Layout.tsx'
 import ErrorPage from '../pages/ErrorPage.tsx'
-import Home from '../pages/Home.tsx'
 import Questions from '../pages/Questions.tsx'
 import CreateQuestions from '../pages/CreateQuestions.tsx'
 import EditQuestions from '../pages/EditQuestions.tsx'
@@ -16,7 +15,7 @@ export const router = createBrowserRouter([
 		children: [
 			{
 				index: true,
-				element: <Home />
+				element: <Users />
 			},
 			{
 				path: 'questions',
