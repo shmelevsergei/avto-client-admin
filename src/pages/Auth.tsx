@@ -46,14 +46,14 @@ const Auth: FC = () => {
 	}
 
 	return (
-		<div className={`mt-40 flex flex-col items-center justify-center`}>
+		<div className={`flex h-full flex-col items-center justify-center`}>
 			<h1 className={`mb-10 text-center text-3xl`}>
 				{isLogin ? ' Авторизация' : ' Регистрация'}
 			</h1>
 
 			<form
 				onSubmit={isLogin ? loginHandler : registrationHandler}
-				className={`mx-auto flex w-1/3 flex-col gap-5`}
+				className={`mx-auto flex w-[270px] flex-col gap-5`}
 			>
 				<input
 					type="text"
@@ -68,7 +68,7 @@ const Auth: FC = () => {
 					onChange={(e) => setPassword(e.target.value)}
 				/>
 
-				<button className={`classBtn mx-auto`}>
+				<button className={`classBtn mx-auto `}>
 					{isLogin ? 'Войти ' : 'Зарегистрироваться'}
 				</button>
 			</form>

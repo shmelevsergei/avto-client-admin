@@ -6,6 +6,7 @@ import CreateQuestions from '../pages/CreateQuestions.tsx'
 import EditQuestions from '../pages/EditQuestions.tsx'
 import Users from '../pages/Users.tsx'
 import Auth from '../pages/Auth.tsx'
+import ProtectedRoute from '../components/ProtectedRoute.tsx'
 
 export const router = createBrowserRouter([
 	{
@@ -15,23 +16,47 @@ export const router = createBrowserRouter([
 		children: [
 			{
 				index: true,
-				element: <Users />
+				element: (
+					<ProtectedRoute>
+						<Users />
+					</ProtectedRoute>
+				)
 			},
 			{
 				path: 'questions',
-				element: <Questions />
+				element: (
+					<ProtectedRoute>
+						<Questions />
+					</ProtectedRoute>
+				),
+				children: [
+					{
+						path: 'createQuestions',
+						element: (
+							<ProtectedRoute>
+								<CreateQuestions />
+							</ProtectedRoute>
+						)
+					},
+					{
+						index: true,
+						path: 'editQuestions',
+						element: (
+							<ProtectedRoute>
+								<EditQuestions />
+							</ProtectedRoute>
+						)
+					}
+				]
 			},
-			{
-				path: 'createQuestions',
-				element: <CreateQuestions />
-			},
-			{
-				path: 'editQuestions',
-				element: <EditQuestions />
-			},
+
 			{
 				path: 'users',
-				element: <Users />
+				element: (
+					<ProtectedRoute>
+						<Users />
+					</ProtectedRoute>
+				)
 			},
 			{
 				path: 'auth',

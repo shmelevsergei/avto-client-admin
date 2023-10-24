@@ -7,10 +7,10 @@ import { useAuth } from '../hooks/useAuth.ts'
 const Layout: FC = () => {
 	const isAuth = useAuth()
 	return (
-		<div className={'min-h-screen pb-20'}>
+		<div className={'h-screen pb-20'}>
 			<Header />
 			<Sidebar isAuth={isAuth} />
-			<div className={'container'}>
+			<div className={'container h-full'}>
 				<Outlet />
 			</div>
 		</div>
