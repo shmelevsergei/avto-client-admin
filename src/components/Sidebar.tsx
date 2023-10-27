@@ -8,7 +8,7 @@ type SidebarProps = {
 const Sidebar: FC<SidebarProps> = ({ isAuth }) => {
 	const [isOpen, setIsOpen] = useState(false)
 	let className =
-		'group fixed bottom-0 left-0 top-0 flex flex-col gap-y-20 bg-blue-800 px-4 pt-5 shadow transition-all duration-300 '
+		'group fixed bottom-0 left-0 top-0 flex flex-col gap-y-20 bg-primary-800 px-4 pt-5 shadow transition-all duration-300 '
 
 	if (!isOpen) {
 		className += ' delay-300 w-[60px] isCloseMenu'
@@ -34,7 +34,7 @@ const Sidebar: FC<SidebarProps> = ({ isAuth }) => {
 				<ul className={'flex flex-col gap-y-4 text-xl'}>
 					<NavLink
 						onClick={() => setIsOpen(!isOpen)}
-						to={'/users'}
+						to={'/'}
 						className={({ isActive }) =>
 							isActive ? 'text-white' : 'text-white/50'
 						}

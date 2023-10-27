@@ -2,9 +2,14 @@ import { createBrowserRouter } from 'react-router-dom'
 import Layout from '../pages/Layout.tsx'
 import ErrorPage from '../pages/ErrorPage.tsx'
 import Questions from '../pages/Questions.tsx'
-import CreateQuestions from '../pages/CreateQuestions.tsx'
-import EditQuestions from '../pages/EditQuestions.tsx'
-import Users from '../pages/Users.tsx'
+import CreateQuestions, {
+	createQuestionAction
+} from '../pages/CreateQuestions.tsx'
+import EditQuestions, {
+	questionsAction,
+	questionsLoader
+} from '../pages/EditQuestions.tsx'
+import Users, { usersLoader } from '../pages/Users.tsx'
 import Auth from '../pages/Auth.tsx'
 import ProtectedRoute from '../components/ProtectedRoute.tsx'
 
@@ -16,6 +21,7 @@ export const router = createBrowserRouter([
 		children: [
 			{
 				index: true,
+				loader: usersLoader,
 				element: (
 					<ProtectedRoute>
 						<Users />
@@ -32,32 +38,18 @@ export const router = createBrowserRouter([
 				children: [
 					{
 						path: 'createQuestions',
-						element: (
-							<ProtectedRoute>
-								<CreateQuestions />
-							</ProtectedRoute>
-						)
+						action: createQuestionAction,
+						element: <CreateQuestions />
 					},
 					{
-						index: true,
 						path: 'editQuestions',
-						element: (
-							<ProtectedRoute>
-								<EditQuestions />
-							</ProtectedRoute>
-						)
+						action: questionsAction,
+						loader: questionsLoader,
+						element: <EditQuestions />
 					}
 				]
 			},
 
-			{
-				path: 'users',
-				element: (
-					<ProtectedRoute>
-						<Users />
-					</ProtectedRoute>
-				)
-			},
 			{
 				path: 'auth',
 				element: <Auth />

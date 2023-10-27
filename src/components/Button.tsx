@@ -1,6 +1,5 @@
 import { FC, JSX } from 'react'
 
-const nameClass: string = 'classBtn'
 type button = {
 	textButton: string
 	className: string
@@ -12,11 +11,7 @@ const Button: FC<button> = ({
 	onClick
 }): JSX.Element => {
 	return (
-		<button
-			onClick={onClick}
-			className={`${nameClass} ${className}`}
-			type={'button'}
-		>
+		<button onClick={onClick} className={`${className}`} type={'button'}>
 			{textButton}
 		</button>
 	)

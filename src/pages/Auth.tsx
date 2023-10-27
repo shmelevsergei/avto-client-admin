@@ -20,7 +20,7 @@ const Auth: FC = () => {
 			if (data) {
 				setTokenToLocalstorage('token', data.token)
 				dispatch(login(data))
-				navigate('/users')
+				navigate('/')
 			}
 			toast.success('Вы авторизованы')
 			// 		setIsLogin(!isLogin)
@@ -57,13 +57,13 @@ const Auth: FC = () => {
 			>
 				<input
 					type="text"
-					className={`inputClass`}
+					className={`inputClass text-black`}
 					placeholder={`Email`}
 					onChange={(e) => setEmail(e.target.value)}
 				/>
 				<input
 					type="password"
-					className={`inputClass`}
+					className={`inputClass text-black`}
 					placeholder={`Password`}
 					onChange={(e) => setPassword(e.target.value)}
 				/>

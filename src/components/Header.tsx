@@ -21,7 +21,7 @@ const Header: FC = () => {
 	return (
 		<header
 			className={
-				'relative flex h-[80px] w-full items-center justify-center bg-blue-800 text-center text-3xl'
+				'relative flex h-[80px] w-full items-center justify-center text-center text-3xl'
 			}
 		>
 			<span className={`block`}>Панель администратора</span>
@@ -31,7 +31,7 @@ const Header: FC = () => {
 					<Button
 						onClick={logoutHandler}
 						textButton={`Выход`}
-						className={`border-none bg-red-900 p-2.5 text-xl`}
+						className={`classBtn-danger bg-danger`}
 					/>
 				) : (
 					''

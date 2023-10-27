@@ -1,41 +1,31 @@
 import { FC } from 'react'
 import { Form } from 'react-router-dom'
 
-import { instance } from '../api/api.axios.ts'
-import { toast } from 'react-toastify'
-
-export const createQuestionAction = async ({ request }: any) => {
-	const formData = await request.formData()
-	const newQuestion = {
-		variant_1: formData.get('answer1'),
-		variant_2: formData.get('answer2'),
-		variant_3: formData.get('answer3'),
-		variant_4: formData.get('answer4'),
-		question: formData.get('title'),
-		variant: formData.get('variant')
-	}
-
-	await instance.post('/questions', newQuestion)
-	toast.success('Вопрос добавлен!')
-	return null
+interface IQuestionForm {
+	id: number
+	setVisibleModal: (visible: boolean) => void
 }
 
-const CreateQuestions: FC = () => {
+const QuestionForm: FC<IQuestionForm> = ({ setVisibleModal, id }) => {
 	return (
-		<div className={`mx-auto max-w-[900px]`}>
-			<Form method={`post`} action={`/questions/createQuestions`}>
+		<div
+			className={`absolute left-2/4 top-2/4 max-w-[900px] -translate-x-2/4 -translate-y-2/4 rounded bg-[#000] bg-opacity-70 p-5`}
+		>
+			<Form method={`patch`} action={`/questions/editQuestions`}>
 				<div className={`flex flex-col gap-2`}>
-					<p className={`text-2xl`}>Введите вопрос:</p>
+					<p className={`text-xl`}>Введите вопрос:</p>
 					<textarea
 						required
 						placeholder={`Введите текст вопроса...`}
 						className={`classInput h-[82px] `}
 						name={`title`}
 					/>
+
+					<input type="hidden" name="id" value={id} />
 				</div>
 
 				<div className={` mt-6`}>
-					<p className={`text-2xl`}>Напишите варианты ответа:</p>
+					<p className={`text-xl`}>Напишите варианты ответа:</p>
 					<div>
 						<div
 							className={`mt-2 flex flex-wrap justify-center gap-5 md:justify-between`}
@@ -128,12 +118,20 @@ const CreateQuestions: FC = () => {
 					</div>
 				</div>
 
-				<div className={`mt-10 flex justify-center`}>
+				<div className={`mt-10 flex justify-center gap-5`}>
 					<button
 						type="submit"
 						className="classBtn-success bg-success"
 					>
-						Создать
+						Обновить
+					</button>
+
+					<button
+						onClick={() => setVisibleModal(false)}
+						type="button"
+						className="classBtn-danger bg-danger"
+					>
+						Закрыть
 					</button>
 				</div>
 			</Form>
@@ -141,4 +139,4 @@ const CreateQuestions: FC = () => {
 	)
 }
 
-export default CreateQuestions
+export default QuestionForm

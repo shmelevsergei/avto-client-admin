@@ -18,15 +18,19 @@ const Questions: FC = () => {
 	}
 	return (
 		<>
-			<div className={`mb-20 mt-14 flex gap-10`}>
+			<div className={`mb-20 mt-14 flex flex-wrap justify-center gap-10`}>
 				<button
-					className={`classBtn ${isCreateActive ? 'active' : ''} `}
+					className={`classBtn bg-primary-900 ${
+						isCreateActive ? 'active' : ''
+					} `}
 					onClick={handleCreateClick}
 				>
 					Создать вопросы
 				</button>
 				<button
-					className={`classBtn ${isEditActive ? 'active' : ''}`}
+					className={`classBtn bg-primary-900 ${
+						isEditActive ? 'active' : ''
+					}`}
 					onClick={handleEditClick}
 				>
 					Изменить вопросы
