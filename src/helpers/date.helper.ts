@@ -9,16 +9,43 @@
 // 	return date.toLocaleDateString('ru-RU', option)
 // }
 
-export const formatDateNumber = (arr: [] | any) => {
-	const lastRatingDateInMilliseconds = arr.reduce(
-		(date: any, rating: any) => {
-			return new Date(rating.updatedAt).getTime() > date
-				? new Date(rating.updatedAt).getTime()
-				: date
+export const formatDateNumber = <T extends string[]>(dates: T): string => {
+	const currentDate = new Date()
+	const closestDate = dates.reduce(
+		(closest, date) => {
+			const dateObj = new Date(date)
+			const timeDifference = Math.abs(
+				dateObj.getTime() - currentDate.getTime()
+			)
+
+			if (timeDifference < closest.timeDifference) {
+				return { dateObj, timeDifference }
+			} else {
+				return closest
+			}
 		},
-		new Date(arr[0].updatedAt).getTime()
+		{
+			dateObj: new Date(dates[0]),
+			timeDifference: Math.abs(
+				new Date(dates[0]).getTime() - currentDate.getTime()
+			)
+		}
 	)
 
-	// Преобразуйте число обратно в формат даты
-	return new Date(lastRatingDateInMilliseconds)
+	const date = new Date(closestDate.dateObj)
+
+	const day = date.getDate().toString().padStart(2, '0')
+	const month = (date.getMonth() + 1).toString().padStart(2, '0')
+	const year = date.getFullYear().toString().slice(-2)
+
+	return `${day}.${month}.${year}`
 }
+
+//const lastDate = arr.reduce((maxDate, currentDate) => {
+// 		return new Date(currentDate) > new Date(maxDate) ? currentDate : maxDate
+// 	}, arr[0])
+//
+// 	const formattedDate = new Date(lastDate).toLocaleDateString('ru-RU')
+//
+// 	// Преобразуйте число обратно в формат даты
+// 	return new Date(formattedDate)

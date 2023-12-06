@@ -30,6 +30,9 @@ export interface IQuestion {
 	variant_2: string
 	variant_3: string
 	variant_4: string
+	variant_5: string
+	link: string
+	complexity: string
 }
 
 export interface IResponseQuestions {
@@ -45,6 +48,8 @@ export interface IPerson {
 	email: string
 	city: string
 	ratings: IRating[]
+	createdAt: string
+	updatedAt: string
 }
 
 export interface IResponsePersons {

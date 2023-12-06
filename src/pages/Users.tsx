@@ -94,15 +94,15 @@ const Users: FC = () => {
 											</td>
 
 											<td className="whitespace-nowrap px-6 py-4">
-												{`${formatDateNumber(
-													person.ratings
-												).getDate()}:${
-													formatDateNumber(
-														person.ratings
-													).getMonth() + 1
-												}:${formatDateNumber(
-													person.ratings
-												).getFullYear()}`}
+												{person.ratings.length > 0
+													? `${formatDateNumber(
+															person.ratings.map(
+																(rating) => {
+																	return rating.updatedAt
+																}
+															)
+													  )}`
+													: 'Не играл'}
 											</td>
 										</tr>
 									))}

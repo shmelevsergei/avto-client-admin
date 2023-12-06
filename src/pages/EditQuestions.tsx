@@ -25,7 +25,9 @@ export const questionsAction = async ({ request }: any) => {
 				variant_3: formData.get('answer3'),
 				variant_4: formData.get('answer4'),
 				question: formData.get('title'),
-				variant: formData.get('variant')
+				variant: formData.get('variant'),
+				link: formData.get('link'),
+				complexity: formData.get('complexity')
 			}
 
 			await instance.patch(`/questions/${question.id}`, question)
@@ -97,6 +99,24 @@ const EditQuestions: FC = () => {
 												<th
 													scope="col"
 													className="px-6 py-4"
+												>
+													Ответ 5
+												</th>
+												<th
+													scope="col"
+													className="px-6 py-4"
+												>
+													Сложность
+												</th>
+												<th
+													scope="col"
+													className="px-6 py-4"
+												>
+													Ссылка на изображение/видео
+												</th>
+												<th
+													scope="col"
+													className="px-6 py-4"
 												></th>
 											</tr>
 										</thead>
@@ -152,6 +172,46 @@ const EditQuestions: FC = () => {
 													>
 														{question.variant_4}
 													</td>
+
+													<td
+														className={`whitespace-nowrap px-6 py-2 ${
+															question.variant ===
+															'variant_5'
+																? 'bg-success-500'
+																: ''
+														}`}
+													>
+														{question.variant_5}
+													</td>
+
+													<td className=" px-6 py-4">
+														{question.complexity}
+													</td>
+
+													<td
+														className={`whitespace-wrap px-6 py-2`}
+													>
+														{question.link.length >
+														0 ? (
+															<a
+																href={
+																	question.link
+																}
+																target="_blank"
+															>
+																{question.link
+																	.length >
+																	30 &&
+																	question.link.slice(
+																		0,
+																		30
+																	) + '...'}
+															</a>
+														) : (
+															'Ссылки нет'
+														)}
+													</td>
+
 													<td className="flex gap-2.5 whitespace-nowrap px-6 py-2">
 														<button
 															onClick={() => {
